@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+    <button type="button" class="btn btn-success"><a href="{{ path('app_logout') }}" style="color:black">Logout</a></button>
+    <div class="example-wrapper">
+
+        <div class="text-center">
+            <h1>Welcome to my blog</h1>
+            <button type="button" class="btn btn-danger"><a href="{{ path('article-add') }}" style="color:black">Add Article</a></button>
+            <button type="button" class="btn btn-danger"><a href="{{ path('administrateur') }}" style="color:black">Go back to admin</a></button>
+        </div>
+        <ul>
+            {% for art in article %}
+                <div class="card mt-5" style="width: 18rem;">
+                    <img class="card-img-top" src="{{ art.image }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ art.title }}</h5>
+                        <a href="{{ path('article-detail', {'article': art.id}) }}" class="btn btn-primary">Read Article</a>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </ul>
+    </div>
+{% endblock %}
